@@ -20,13 +20,25 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 closeBtn.addEventListener("click", closeModal);
 
 // launch modal form
-function launchModal() {
+functiodata-error-visiblen launchModal() {
   modalbg.style.display = "block";
 }
 
 // launch modal form
 function closeModal() {
   modalbg.style.display = "none";
+}
+
+function NomPrenomInput(input){
+  if (input.value.toString().trim().length < 2){
+    input.parentElement.setAttribute("data-error-visible", "true");
+      return false;
+  }
+    else{
+      input.parentElement.remouveAttribute("data-error-visible")
+        return true;
+
+  }
 }
 
 
