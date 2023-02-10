@@ -12,12 +12,16 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeBtn = document.querySelector(".close");
+const form = document.querySelector("form");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // close modal event
 closeBtn.addEventListener("click", closeModal);
+
+// Add submit event to form
+form.addEventListener("submit", validate)
 
 // launch modal form
 function launchModal() {
@@ -30,7 +34,7 @@ function closeModal() {
 }
 
 // validate
-function validate() {
+function validate(e) {
   // au début pas d'erreur
   let isValidate = true;
 
@@ -59,7 +63,9 @@ function validate() {
   const inputCheckbox1 = document.querySelector("#checkbox1");
   isValidate =  Html5Input(inputCheckbox1) && isValidate;
   
-  return isValidate;
+  if(!isValidate)
+    // arrête de la proparation de l'evenenement
+    e.preventDefault();
 }
 
 function NomPrenomInput(input) {
