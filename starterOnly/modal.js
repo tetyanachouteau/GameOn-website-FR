@@ -65,6 +65,7 @@ function validate() {
 function NomPrenomInput(input) {
   if (input.value.toString().trim().length < 2) {
     input.parentElement.dataset.errorVisible = true;
+    input.parentElement.dataset.error = "Doit contenir 2 caractères au moins";
     //input.parentElement.setAttribute("data-error-visible", "true");
     return false;
   }
