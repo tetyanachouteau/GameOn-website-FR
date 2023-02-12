@@ -110,6 +110,8 @@ function Html5Input(input) {
         input.parentElement.dataset.error = "Vous devez vérifier que vous acceptez les termes et conditions.";
       } else if (input.id === "birthdate") {
         input.parentElement.dataset.error = "Vous devez entrer votre date de naissance.";
+      } else if (input.name === "location") {
+        input.parentElement.dataset.error = "Vous devez choisir une option.";
       } else {
         input.parentElement.dataset.error = "Le champs est obligatoire.";
       }
