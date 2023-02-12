@@ -35,6 +35,13 @@ function closeModal() {
 
 // validate
 function validate(e) {
+  const formulaire = e.target;
+  const formData = new FormData(formulaire);
+
+  for (const [key, value] of formData) {
+    console.log(`${key}: ${value}\n`);
+  }
+
   // au début pas d'erreur
   let isValidate = true;
 
