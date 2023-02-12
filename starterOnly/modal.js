@@ -29,8 +29,8 @@ function launchModal() {
 }
 
 // launch modal form
-function closeModale(e) {
-  e.parentElement.parentElement.style.display = "none";
+function closeModal(e) {
+  e.target.parentElement.parentElement.style.display = "none";
 }
 
 // validate
@@ -131,8 +131,10 @@ function verifUrl () {
   let location = document.location;
   let url = new URL(location);
   let params = url.searchParams;
-  if(params.length != 0){
-    console.log("Y a de params !")
+  if(params.get("first")){
+    console.log("Y a de params !");
+    let confirmModal = document.querySelector(".confirmModal");
+    confirmModal.style.display = "block";
   }
 }
 
