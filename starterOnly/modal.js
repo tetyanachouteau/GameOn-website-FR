@@ -74,9 +74,10 @@ function validate(e) {
   const inputCheckbox1 = document.querySelector("#checkbox1");
   isValidate = Html5Input(inputCheckbox1) && isValidate;
 
-  if (!isValidate)
+  if (!isValidate){
     // arrête de la proparation de l'evenenement
     e.preventDefault();
+  }
 }
 
 function NomPrenomInput(input) {
@@ -125,6 +126,17 @@ function Html5Input(input) {
 
   }
 }
+
+function verifUrl () {
+  let location = document.location;
+  let url = new URL(location);
+  let params = url.searchParams;
+  if(params.length != 0){
+    console.log("Y a de params !")
+  }
+}
+
+verifUrl();
 
 
 
