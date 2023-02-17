@@ -105,12 +105,12 @@ function NomPrenomInput(input) {
 function DateIsValid(input) {
   if (new Date(input.value) > new Date()) {
     input.parentElement.dataset.errorVisible = true;
-    input.parentElement.dataset.error = "Votre date de naissance doit être avant aujourd'hui";
+    input.parentElement.dataset.error = "Votre date de naissance doit être avant aujourd'hui.";
     return false;
   }
   if ((new Date(input.value)).getFullYear() < 1900 ) {
     input.parentElement.dataset.errorVisible = true;
-    input.parentElement.dataset.error = "Votre date de naissance trop ancienne";
+    input.parentElement.dataset.error = "Votre date de naissance trop ancienne.";
     return false;
   }
   return true;
@@ -124,13 +124,13 @@ function Html5Input(input) {
       input.parentElement.dataset.error = "Votre email est invalide.";
     }
     if (input.validity.stepMismatch) {
-      input.parentElement.dataset.error = "La quantité n'est pas une valeur correcte";
+      input.parentElement.dataset.error = "La quantité n'est pas une valeur correcte.";
     }
     if (input.validity.rangeOverflow) {
-      input.parentElement.dataset.error = "La quantité est trop grande";
+      input.parentElement.dataset.error = "La quantité est trop grande.";
     }
     if (input.validity.rangeUnderflow) {
-      input.parentElement.dataset.error = "La quantité est trop petite";
+      input.parentElement.dataset.error = "La quantité est trop petite.";
     }
     if (input.validity.valueMissing) {
       if (input.id === "checkbox1") {
