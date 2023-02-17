@@ -182,7 +182,7 @@ main {
 }
 
 .confirmModal .content{
-  margin: 40% auto;
+  height: 80%;
 }
 
 .content {
@@ -197,6 +197,13 @@ main {
   position: relative;
   color: #fff;
   padding-top: 10px;
+}
+
+.confirmModal .modal-body{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 90%;
 }
 
 .modal-body {

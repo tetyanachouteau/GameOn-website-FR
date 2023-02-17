@@ -13,12 +13,16 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeBtn = document.querySelectorAll(".close");
 const form = document.querySelector("form");
+const closeConfirm = document.querySelector("#closeConfirm");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // close modal event
 closeBtn.forEach((btn) => btn.addEventListener("click", closeModal));
+
+// close confirm event
+closeConfirm.addEventListener("click", closeConfirmModal);
 
 // Add submit event to form
 form.addEventListener("submit", validate)
@@ -28,9 +32,14 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
-// launch modal form
+// close modal form
 function closeModal(e) {
   e.target.parentElement.parentElement.style.display = "none";
+}
+
+// close confirm modal
+function closeConfirmModal(e) {
+  e.target.parentElement.parentElement.parentElement.style.display = "none";
 }
 
 // validate
