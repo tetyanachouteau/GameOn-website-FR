@@ -61,6 +61,7 @@ function validate(e) {
   // on test date
   const inputDate = document.querySelector("#birthdate");
   isValidate = Html5Input(inputDate) && isValidate;
+  isValidate = DateIsValid(inputDate) && isValidate;
 
   // on test Quantity
   const inputQuantity = document.querySelector("#quantity");
@@ -74,7 +75,7 @@ function validate(e) {
   const inputCheckbox1 = document.querySelector("#checkbox1");
   isValidate = Html5Input(inputCheckbox1) && isValidate;
 
-  if (!isValidate){
+  if (!isValidate) {
     // arrête de la proparation de l'evenenement
     e.preventDefault();
   }
@@ -87,6 +88,7 @@ function NomPrenomInput(input) {
     if (input.id === "first") {
       input.parentElement.dataset.error = "Veuillez entrer 2 caractères ou plus pour le champ du prénom";
     } else {
+
       input.parentElement.dataset.error = "Veuillez entrer 2 caractères ou plus pour le champ du nom";
     }
     return false;
@@ -100,12 +102,36 @@ function NomPrenomInput(input) {
   }
 }
 
+function DateIsValid(input) {
+  if (new Date(input.value) > new Date()) {
+    input.parentElement.dataset.errorVisible = true;
+    input.parentElement.dataset.error = "Votre date de naissance doit être avant aujourd'hui";
+    return false;
+  }
+  if ((new Date(input.value)).getFullYear() < 1900 ) {
+    input.parentElement.dataset.errorVisible = true;
+    input.parentElement.dataset.error = "Votre date de naissance trop ancienne";
+    return false;
+  }
+  return true;
+}
+
 function Html5Input(input) {
   if (!input.checkValidity()) {
     input.parentElement.dataset.errorVisible = true;
     console.log(input.validity);
-    if (input.validity.typeMismatch)
+    if (input.validity.typeMismatch) {
       input.parentElement.dataset.error = "Votre email est invalide.";
+    }
+    if (input.validity.stepMismatch) {
+      input.parentElement.dataset.error = "La quantité n'est pas une valeur correcte";
+    }
+    if (input.validity.rangeOverflow) {
+      input.parentElement.dataset.error = "La quantité est trop grande";
+    }
+    if (input.validity.rangeUnderflow) {
+      input.parentElement.dataset.error = "La quantité est trop petite";
+    }
     if (input.validity.valueMissing) {
       if (input.id === "checkbox1") {
         input.parentElement.dataset.error = "Vous devez vérifier que vous acceptez les termes et conditions.";
@@ -127,11 +153,11 @@ function Html5Input(input) {
   }
 }
 
-function verifUrl () {
+function verifUrl() {
   let location = document.location;
   let url = new URL(location);
   let params = url.searchParams;
-  if(params.get("first")){
+  if (params.get("first")) {
     console.log("Y a de params !");
     let confirmModal = document.querySelector(".confirmModal");
     confirmModal.style.display = "block";
