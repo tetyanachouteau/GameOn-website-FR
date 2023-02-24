@@ -75,6 +75,7 @@ function validate(e) {
   // on test Quantity
   const inputQuantity = document.querySelector("#quantity");
   isValidate = Html5Input(inputQuantity) && isValidate;
+  isValidate = NumberIsValid(inputQuantity) && isValidate;
 
   // on test location
   const inputRadio = document.querySelector("[name='location']");
@@ -125,9 +126,19 @@ function DateIsValid(input) {
   return true;
 }
 
+function NumberIsValid(input) {
+  if (Number.isNaN(Number.parseInt(input.value))) {
+    input.parentElement.dataset.errorVisible = true;
+    input.parentElement.dataset.error = "Votre quantité n'est pas valide.";
+    return false;
+  }
+  return true;
+}
+
 function Html5Input(input) {
   if (!input.checkValidity()) {
     input.parentElement.dataset.errorVisible = true;
+    //typeMismatch? value missing
     console.log(input.validity);
     if (input.validity.typeMismatch) {
       input.parentElement.dataset.error = "Votre email est invalide.";
